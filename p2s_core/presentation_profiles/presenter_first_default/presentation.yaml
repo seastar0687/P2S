@@ -1,0 +1,11 @@
+profile_id: presenter_first_default
+name: Presenter First Default
+description: 3D presenter-led short video with optional supporting assets and low-distraction backgrounds.
+presenter_priority: high
+default_background_mode: static_clean
+require_asset_every_scene: false
+asset_insertion_policy: only_when_helpful
+presenter_min_visibility_ratio: 0.6
+fullscreen_asset_allowed: true
+fullscreen_asset_max_ratio: 0.25
+allow_repeated_background: true

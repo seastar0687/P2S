@@ -1,0 +1,5 @@
+voice_id: seina_edge_tts
+backend: edge_tts
+default_voice: zh-TW-HsiaoChenNeural
+default_speed: 1.0
+notes: MVP0.5 placeholder; no voice cloning or emotion-conditioned TTS.

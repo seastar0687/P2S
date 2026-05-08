@@ -1,0 +1,51 @@
+style_id: rigorous_science_short
+name: Rigorous Science Short
+summary: Short-form science explanation that keeps claims grounded and avoids unsupported hype.
+target_platforms:
+  - youtube_shorts
+  - reels
+  - tiktok
+target_audience: general_science
+language: zh-TW
+narrative_structure:
+  - hook
+  - problem
+  - method_intuition
+  - key_result
+  - limitation
+  - takeaway
+pacing: moderate
+humor_level: 1
+rigor_level: 5
+metaphor_level: 2
+allowed_rhetorical_devices:
+  - controlled_question_hook
+  - simple_analogy
+  - contrast
+forbidden_rhetorical_devices:
+  - clickbait_exaggeration
+  - unsupported_breakthrough_claim
+  - fear_mongering
+sentence_rules:
+  max_voice_chars_per_scene: 55
+  prefer_short_sentences: true
+  avoid_nested_clauses: true
+subtitle_rules:
+  max_subtitle_chars: 24
+  one_sentence_per_scene: true
+hook_rules:
+  must_be_supported_by_paper: true
+  avoid_absolute_claims: true
+transition_rules:
+  prefer_logical_links: true
+limitation_rules:
+  must_include_uncertainty: true
+prompt_guide_path: prompt_guide.md
+example_paths:
+  - examples/good_01.md
+  - examples/good_02.md
+  - examples/bad_overhyped.md
+forbidden_phrases_path: forbidden_phrases.txt
+rewrite_rules_path: null
+rubric_path: null
+version: 0.1.0

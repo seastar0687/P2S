@@ -1,0 +1,20 @@
+# P2S main configuration
+
+llm:
+  provider: openai
+  model: gpt-4o
+  api_base: https://api.openai.com/v1
+  api_key: ${OPENAI_API_KEY}
+  temperature: 0.3
+  max_retries: 3
+
+paths:
+  runs_dir: ./runs
+  personas_dir: ./p2s_core/personas
+  styles_dir: ./p2s_core/styles
+
+extraction:
+  backend: pymupdf
+  ocr_fallback: null
+  save_figures: false
+  save_tables_as_image: false

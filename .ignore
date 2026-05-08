@@ -1,0 +1,13 @@
+pytest-cache-files-*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_deps/
+.test_runs/
+.venv/
+.venv-win/
+.python311/
+python-*.exe
+python_install.log
+runs/
+.env
