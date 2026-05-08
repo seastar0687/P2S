@@ -223,6 +223,7 @@ def _rewrite_system_prompt(state: ProjectState) -> str:
         "You may modify only voice_text, subtitle_text, asset_intent, and notes_for_render. "
         "Do not add unsupported claims, hype, stronger certainty, new numbers, or new claims. "
         "Do not change scene ids or presentation skeleton. "
+        "Echo the exact project_id from the user payload in your JSON response. "
         "Return only JSON matching the requested schema. "
         f"Language: {state.settings.language}. Audience: {state.settings.target_audience}."
     )
@@ -231,6 +232,7 @@ def _rewrite_system_prompt(state: ProjectState) -> str:
 def _rewrite_user_payload(scenes_bundle: ScenesBundle, claims: list[PaperClaim], state: ProjectState) -> str:
     claim_map = {claim.claim_id: claim for claim in claims}
     payload = {
+        "project_id": state.project_id,
         "style": {
             "style_id": state.style.get("style_id"),
             "sentence_rules": state.style.get("sentence_rules", {}),

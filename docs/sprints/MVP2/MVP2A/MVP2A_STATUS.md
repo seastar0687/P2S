@@ -36,7 +36,7 @@ Automated verification passed with the project-local Windows runtime:
 Current result:
 
 ```text
-108 passed
+115 passed
 ```
 
 ## Manual Real-Paper Smoke
@@ -95,6 +95,7 @@ MVP2A is deterministic-first. The generated text is intentionally simple and con
 
 - The Windows pytest cache permission issue remains mitigated and tracked in `docs/current/ISSUES.md`.
 - Use `.\.venv-win\Scripts\python.exe` for all tests and CLI commands, per `docs/current/WINDOWS_ENVIRONMENT.md`.
+- v8.1 code-version metadata records Git provenance in `project_state.json` and each executed stage. It does not sync or commit `runs/` artifacts.
 
 ## Next Step
 

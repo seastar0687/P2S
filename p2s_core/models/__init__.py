@@ -15,6 +15,7 @@ from p2s_core.models.presentation import (
     ScenesBundle,
 )
 from p2s_core.models.project_state import (
+    CodeVersion,
     STAGE_NAMES,
     ExtractionState,
     ProjectSettings,
@@ -46,6 +47,7 @@ __all__ = [
     "GateDecision",
     "ClaimExtractionResult",
     "ClaimReviewBundle",
+    "CodeVersion",
     "PaperChunk",
     "PaperClaim",
     "PaperSection",

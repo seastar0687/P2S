@@ -72,13 +72,14 @@ def status(project_id: str | None) -> None:
     click.echo(f"Project: {state.project_id}")
     click.echo(f"Persona: {state.persona.get('persona_id')} ({state.persona.get('version')})")
     click.echo(f"Style:   {state.style.get('style_id')} ({state.style.get('version')})")
+    click.echo(f"Project code version: {_format_code_version(state.code_version)}")
     click.echo("")
     click.echo("Stages:")
     for stage_name, stage in state.stages.items():
         suffix = ""
         if stage.finished_at:
             suffix = f" ({stage.finished_at})"
-        click.echo(f"  {stage_name:<22} {stage.status}{suffix}")
+        click.echo(f"  {stage_name:<22} {stage.status:<12} {_format_code_version(stage.code_version)}{suffix}")
 
 
 @cli.command("validate-personas")
@@ -123,6 +124,17 @@ def _resolve_project_id(project_id: str | None) -> str:
 
     latest = max(candidates, key=lambda path: (path / persistence.STATE_FILENAME).stat().st_mtime)
     return latest.name
+
+
+def _format_code_version(code_version) -> str:
+    if code_version is None:
+        return "-"
+    if code_version.source != "git":
+        return "unknown"
+    commit = code_version.commit or "-"
+    branch = code_version.branch or "-"
+    clean_state = "dirty" if code_version.dirty else "clean"
+    return f"{commit} {branch} {clean_state}"
 
 
 if __name__ == "__main__":

@@ -13,6 +13,8 @@ from p2s_core.services import persistence
 from p2s_core.services.llm_quality_rewrite import (
     RewriteGuardrailError,
     apply_rewrite_result,
+    _rewrite_system_prompt,
+    _rewrite_user_payload,
     run_llm_quality_rewrite_stage,
 )
 from p2s_core.services.persona_style import load_presentation_profile
@@ -140,6 +142,28 @@ def test_apply_rewrite_rejects_unknown_or_missing_scene_ids():
         assert "scene_id set" in str(exc)
     else:
         raise AssertionError("Expected RewriteGuardrailError")
+
+
+def test_rewrite_prompt_includes_exact_project_id():
+    state = make_state("rewrite_project_id")
+    claims = [make_claim("claim_001", "The paper addresses noisy labels.", "problem", 5)]
+    narrative = NarrativePlan(
+        project_id=state.project_id,
+        target_duration_sec=60,
+        language="zh-TW",
+        audience="general_science",
+        selected_claim_ids=["claim_001"],
+        narrative_arc=[NarrativeArcItem(purpose="hook", claim_ids=["claim_001"], intent="hook")],
+        rationale="test",
+        created_at="2026-05-08T00:00:00Z",
+    )
+    scenes = build_scenes_bundle(state, claims, narrative, load_presentation_profile())
+
+    system_prompt = _rewrite_system_prompt(state)
+    user_payload = _rewrite_user_payload(scenes, claims, state)
+
+    assert "Echo the exact project_id" in system_prompt
+    assert "'project_id': 'rewrite_project_id'" in user_payload
 
 
 def test_llm_quality_rewrite_pass_promotes_rewritten_scenes(monkeypatch):

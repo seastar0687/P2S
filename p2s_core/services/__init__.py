@@ -1,6 +1,7 @@
 """Service package for P2S MVP 0."""
 
 from p2s_core.services.llm_service import LLMService, LLMServiceError
+from p2s_core.services.code_version import capture_code_version
 from p2s_core.services.persona_style import (
     PackageValidationResult,
     check_persona_style_compatibility,
@@ -25,6 +26,7 @@ __all__ = [
     "LLMService",
     "LLMServiceError",
     "PackageValidationResult",
+    "capture_code_version",
     "check_persona_style_compatibility",
     "extract_text",
     "extract_claims",

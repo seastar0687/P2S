@@ -558,7 +558,7 @@ same claim grounding → different persona/style wrappers → compare engagement
 
 ```text
 docs/current/p2s_research_direction_v5.md                 → 研究問題、RQ、評估設計、投稿方向
-docs/current/P2S_redesign_architecture_v8.md               → 長期完整工程架構與系統藍圖
+docs/current/P2S_redesign_architecture_v8.1.md             → 長期完整工程架構與系統藍圖
 docs/sprints/MVP0/IMPLEMENTATION_PLAN_MVP0_v3.md           → 兩週 sprint contract，實際開工依據
 ```
 

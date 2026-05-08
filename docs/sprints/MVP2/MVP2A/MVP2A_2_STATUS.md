@@ -52,7 +52,7 @@ Full regression also passed:
 Current result:
 
 ```text
-108 passed
+116 passed
 ```
 
 CLI status migration check:
@@ -65,26 +65,21 @@ Relevant stage order:
 
 ```text
 presentation_planning  done
-llm_quality_rewrite    pending
+llm_quality_rewrite    done
 asset_preparation      pending
 ```
 
 ## Manual Real-Paper Smoke
 
-Not run with a real LLM in this pass to avoid external API usage during implementation.
+Real LLM smoke completed and accepted:
 
-Recommended command after MVP2A outputs exist:
-
-```text
-.\.venv-win\Scripts\python.exe -m p2s_core.cli run --stage llm_quality_rewrite --project mvp1_real_smoke
-.\.venv-win\Scripts\python.exe -m p2s_core.cli status --project mvp1_real_smoke
-```
-
-Accepted outcomes:
-
-- `done`: `scenes_rewritten.json` promoted through `active_scene_source`.
-- `needs_review` or `rejected`: deterministic `scenes.json` remains active.
-- `failed`: usually missing `OPENAI_API_KEY`, schema parse failure, or LLM request failure.
+- project: `mvp1_real_smoke`
+- command: `.\.venv-win\Scripts\python.exe -m p2s_core.cli run --stage llm_quality_rewrite --project mvp1_real_smoke --force`
+- result: `llm_quality_rewrite = done`
+- active scene source: `scenes_rewritten.json`
+- gate: `pass`
+- regression: `116 passed`
+- report: `docs/sprints/MVP2/MVP2A/MVP2A_2_REAL_LLM_SMOKE.md`
 
 ## Output Contracts
 
@@ -104,6 +99,8 @@ runs/{project_id}/presentation_plan.json
 
 MVP2A-2 never overwrites `scenes.json` and never rewrites presentation ratios.
 
+Code-version metadata from architecture v8.1 is provenance only: `project_state.code_version` and `stages.<stage>.code_version` record Git commit/branch/dirty state, while generated `runs/` artifacts remain outside Git.
+
 ## Not In MVP2A-2
 
 - TTS generation
@@ -118,8 +115,7 @@ MVP2A-2 never overwrites `scenes.json` and never rewrites presentation ratios.
 
 ## Remaining MVP2A-2 Gap
 
-- Real OpenAI smoke is still pending.
-- Rewrite prompt quality should be calibrated against real papers after the first manual smoke.
+- Rewrite prompt quality can be further calibrated with 2-3 additional real papers.
 - The current implementation uses a single `scenes_rewritten.json` candidate artifact; multi-revision rewrite history is deferred.
 
 ## MVP2B Note

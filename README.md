@@ -49,7 +49,7 @@ Project documents follow the v8 architecture document management layout:
 - `docs/sprints/`: historical sprint plans and status snapshots. Treat these as records of what was decided at the time.
 - `docs/archive/`: retired architecture specs and migration logs for comparison only.
 
-Start with `docs/current/P2S_redesign_architecture_v8.md` for the active architecture, and use `docs/sprints/` only when you need historical MVP context.
+Start with `docs/current/P2S_redesign_architecture_v8.1.md` for the active architecture, and use `docs/sprints/` only when you need historical MVP context.
 
 ## CLI
 

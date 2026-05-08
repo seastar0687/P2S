@@ -46,6 +46,14 @@ class ExtractionState(BaseModel):
     quality_report: dict = Field(default_factory=dict)
 
 
+class CodeVersion(BaseModel):
+    commit: str | None = None
+    branch: str | None = None
+    dirty: bool | None = None
+    captured_at: str
+    source: Literal["git", "unknown"] = "git"
+
+
 class StageState(BaseModel):
     status: Literal["pending", "running", "done", "failed", "needs_review", "rejected"] = "pending"
     started_at: str | None = None
@@ -53,6 +61,7 @@ class StageState(BaseModel):
     output_paths: list[str] = Field(default_factory=list)
     error: str | None = None
     revision_count: int = 0
+    code_version: CodeVersion | None = None
 
 
 class ProjectState(BaseModel):
@@ -79,6 +88,7 @@ class ProjectState(BaseModel):
     assets: dict = Field(default_factory=lambda: {"images": [], "audio": [], "segments": []})
     reviews: list[ReviewResult] = Field(default_factory=list)
     revision_history: list[dict] = Field(default_factory=list)
+    code_version: CodeVersion | None = None
     final_video: dict = Field(default_factory=lambda: {"path": None, "status": "draft"})
     stages: dict[str, StageState]
 

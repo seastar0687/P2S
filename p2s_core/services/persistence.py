@@ -25,6 +25,9 @@ def load_state(project_id: str) -> ProjectState:
 
 
 def save_state(state: ProjectState) -> None:
+    from p2s_core.services.code_version import capture_code_version
+
+    state.code_version = capture_code_version()
     path = state_path(state.project_id)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(state.model_dump_json(indent=2), encoding="utf-8")

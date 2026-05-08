@@ -5,6 +5,7 @@ from pathlib import Path
 
 from p2s_core.models import ProjectSource, ProjectState, default_stages
 from p2s_core.pipelines.base import BasePipeline
+from p2s_core.services.code_version import capture_code_version
 from p2s_core.services import claim_extraction, llm_quality_rewrite, narrative_planning
 from p2s_core.services import paper_extraction, persistence
 from p2s_core.services import presentation_planning
@@ -65,7 +66,10 @@ class PaperSummaryPipeline(BasePipeline):
             raise NotImplementedError("此 stage 將在 MVP 2+ 實作")
 
         persistence.snapshot(project_id)
+        code_version = capture_code_version()
         stage = state.stages[stage_name]
+        stage.code_version = code_version
+        state.code_version = code_version
         stage.status = "running"
         stage.started_at = self.utc_now()
         stage.finished_at = None
@@ -83,16 +87,19 @@ class PaperSummaryPipeline(BasePipeline):
                 state = presentation_planning.run_presentation_planning_stage(state)
             else:
                 state = llm_quality_rewrite.run_llm_quality_rewrite_stage(state)
+            state.code_version = capture_code_version()
             state.stages[stage_name].finished_at = self.utc_now()
             persistence.save_state(state)
             return state
         except llm_quality_rewrite.RewriteGuardrailError as exc:
+            state.code_version = capture_code_version()
             state.stages[stage_name].status = "rejected"
             state.stages[stage_name].finished_at = self.utc_now()
             state.stages[stage_name].error = str(exc)
             persistence.save_state(state)
             raise
         except Exception as exc:
+            state.code_version = capture_code_version()
             state.stages[stage_name].status = "failed"
             state.stages[stage_name].finished_at = self.utc_now()
             state.stages[stage_name].error = str(exc)

@@ -2,7 +2,7 @@
 
 > Version: v0.1  
 > Status: Sprint Contract  
-> Depends on: `P2S_redesign_architecture_v8.md`, `IMPLEMENTATION_PLAN_MVP1_v2.md`  
+> Depends on: `P2S_redesign_architecture_v8.1.md`, `IMPLEMENTATION_PLAN_MVP1_v2.md`  
 > Target stage: `presentation_planning`  
 > Core scope: `claims.json → narrative_plan.json → scenes.json → presentation_plan.json → reviews/presentation_review_rev001.json`
 
