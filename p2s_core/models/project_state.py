@@ -17,6 +17,7 @@ STAGE_NAMES = (
     "asset_preparation",
     "asset_generation",
     "composition",
+    "media_quality_check",
     "final_review",
 )
 

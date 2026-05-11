@@ -27,6 +27,7 @@ class BasePipeline:
         "asset_preparation",
         "asset_generation",
         "composition",
+        "media_quality_check",
         "final_review",
     )
 
@@ -52,6 +53,12 @@ class BasePipeline:
                 "narrative_planning",
                 "presentation_planning",
             )
+        if stage_name == "asset_generation":
+            return ("asset_preparation",)
+        if stage_name == "composition":
+            return ("asset_generation",)
+        if stage_name == "media_quality_check":
+            return ("composition",)
         stage_index = self.stage_order.index(stage_name)
         return self.stage_order[:stage_index]
 

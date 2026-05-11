@@ -22,6 +22,8 @@ from p2s_core.services.narrative_planning import run_narrative_planning_stage
 from p2s_core.services.presentation_planning import run_presentation_planning_stage
 from p2s_core.services.llm_quality_rewrite import run_llm_quality_rewrite_stage
 from p2s_core.services.asset_preparation import prepare_assets_for_project, run_asset_preparation_stage
+from p2s_core.services.media_generation import run_asset_generation_stage, run_composition_stage
+from p2s_core.services.media_quality import run_media_quality_check_stage
 
 __all__ = [
     "LLMService",
@@ -45,6 +47,9 @@ __all__ = [
     "run_llm_quality_rewrite_stage",
     "prepare_assets_for_project",
     "run_asset_preparation_stage",
+    "run_asset_generation_stage",
+    "run_composition_stage",
+    "run_media_quality_check_stage",
     "validate_persona_package",
     "validate_persona_packages",
     "validate_presentation_profile_package",

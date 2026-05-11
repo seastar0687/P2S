@@ -6,7 +6,7 @@ from pathlib import Path
 from p2s_core.models import ProjectSource, ProjectState, default_stages
 from p2s_core.pipelines.base import BasePipeline
 from p2s_core.services.code_version import capture_code_version
-from p2s_core.services import asset_preparation, claim_extraction, llm_quality_rewrite, narrative_planning
+from p2s_core.services import asset_preparation, claim_extraction, llm_quality_rewrite, media_generation, media_quality, narrative_planning
 from p2s_core.services import paper_extraction, persistence
 from p2s_core.services import presentation_planning
 from p2s_core.services.persona_style import load_persona, load_style
@@ -63,6 +63,9 @@ class PaperSummaryPipeline(BasePipeline):
             "presentation_planning",
             "llm_quality_rewrite",
             "asset_preparation",
+            "asset_generation",
+            "composition",
+            "media_quality_check",
         }:
             raise NotImplementedError("此 stage 將在 MVP 2+ 實作")
 
@@ -88,8 +91,14 @@ class PaperSummaryPipeline(BasePipeline):
                 state = presentation_planning.run_presentation_planning_stage(state)
             elif stage_name == "llm_quality_rewrite":
                 state = llm_quality_rewrite.run_llm_quality_rewrite_stage(state)
-            else:
+            elif stage_name == "asset_preparation":
                 state = asset_preparation.run_asset_preparation_stage(state)
+            elif stage_name == "asset_generation":
+                state = media_generation.run_asset_generation_stage(state)
+            elif stage_name == "composition":
+                state = media_generation.run_composition_stage(state)
+            else:
+                state = media_quality.run_media_quality_check_stage(state)
             state.code_version = capture_code_version()
             state.stages[stage_name].finished_at = self.utc_now()
             persistence.save_state(state)

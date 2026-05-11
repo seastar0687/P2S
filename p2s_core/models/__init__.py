@@ -20,6 +20,22 @@ from p2s_core.models.extraction import (
     ExtractionQualityReport,
     RealPaperSmokeReport,
 )
+from p2s_core.models.media import (
+    CompositionResult,
+    GeneratedAudio,
+    GeneratedSegment,
+    GeneratedVisual,
+    MediaGenerationReport,
+)
+from p2s_core.models.media_quality import (
+    AudioQualityResult,
+    CompositionQualityResult,
+    FallbackQualityReport,
+    MediaQualityReport,
+    SegmentQualityResult,
+    SubtitleReadabilityResult,
+    VisualLayoutQualityResult,
+)
 from p2s_core.models.paper import ExtractedPaper, PaperChunk, PaperSection
 from p2s_core.models.persona import PersonaProfile, VRMProfile, VoiceProfile
 from p2s_core.models.presentation import (
@@ -60,6 +76,7 @@ from p2s_core.models.style import StyleProfile
 __all__ = [
     "AssetPlanBundle",
     "AssetPlanQualityReport",
+    "AudioQualityResult",
     "EvidenceSpan",
     "EvidenceMatchReport",
     "EvidenceMatchReportBundle",
@@ -70,12 +87,20 @@ __all__ = [
     "ExtractedTable",
     "ExtractionQualityReport",
     "GateDecision",
+    "GeneratedAudio",
+    "GeneratedSegment",
+    "GeneratedVisual",
     "ClaimExtractionResult",
     "ClaimReviewBundle",
     "CodeVersion",
+    "CompositionResult",
+    "CompositionQualityResult",
+    "FallbackQualityReport",
     "PaperChunk",
     "PaperClaim",
     "PaperSection",
+    "MediaGenerationReport",
+    "MediaQualityReport",
     "NarrativeArcItem",
     "NarrativePlan",
     "PersonaProfile",
@@ -92,6 +117,7 @@ __all__ = [
     "STAGE_NAMES",
     "Scene",
     "SceneAssetPlan",
+    "SegmentQualityResult",
     "SceneDraft",
     "ScenesBundle",
     "SceneRewritePatch",
@@ -99,6 +125,7 @@ __all__ = [
     "StageState",
     "StyleProfile",
     "SuggestedFix",
+    "SubtitleReadabilityResult",
     "TTSPlan",
     "AssetPolicy",
     "AssetTypeHint",
@@ -108,6 +135,7 @@ __all__ = [
     "VisualFocus",
     "VisualIdentityProfile",
     "VisualAssetPlan",
+    "VisualLayoutQualityResult",
     "VisualType",
     "VoiceDirection",
     "VoiceProfile",

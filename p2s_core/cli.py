@@ -69,6 +69,17 @@ def run(stage_name: str, project_id: str | None, force: bool) -> None:
         click.echo(f"  -> warnings: {len(quality_report.get('warnings', []))}")
         for warning in quality_report.get("warnings", []):
             click.echo(f"     warning: {warning}")
+    if stage_name == "composition" and state.final_video.get("path"):
+        click.echo(f"  -> final_video: {state.final_video.get('path')}")
+    if stage_name == "media_quality_check":
+        report_path = persistence.project_dir(project_id) / "media_quality_report.json"
+        if report_path.exists():
+            import json
+
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            click.echo(f"  -> pass_gate: {report.get('pass_gate')}")
+            click.echo(f"  -> blocking_issues: {len(report.get('blocking_issues', []))}")
+            click.echo(f"  -> warnings: {len(report.get('warnings', []))}")
 
 
 @cli.command()
