@@ -60,10 +60,13 @@ def test_run_extraction_stage_writes_text_and_updates_state(monkeypatch):
     state = make_state(project_id, pdf_path)
 
     updated = paper_extraction.run_extraction_stage(state)
-    output_path = Path(updated.extraction.text_md)
+    output_path = runs_dir / project_id / updated.extraction.text_md
 
     assert updated.stages["extraction"].status == "done"
-    assert updated.stages["extraction"].output_paths == [str(output_path)]
+    assert "extracted_text.md" in updated.stages["extraction"].output_paths
     assert output_path.exists()
     assert "Extraction smoke test text." in output_path.read_text(encoding="utf-8")
     assert output_path == runs_dir / project_id / "extracted_text.md"
+    assert (runs_dir / project_id / "sections.json").exists()
+    assert (runs_dir / project_id / "figures.json").exists()
+    assert (runs_dir / project_id / "extraction_quality_report.json").exists()

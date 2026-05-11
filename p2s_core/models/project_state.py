@@ -40,6 +40,11 @@ class ProjectSettings(BaseModel):
 
 class ExtractionState(BaseModel):
     text_md: str | None = None
+    normalized_text_md: str | None = None
+    sections_path: str | None = None
+    figures_path: str | None = None
+    tables_path: str | None = None
+    evidence_match_report_path: str | None = None
     sections: list[dict] = Field(default_factory=list)
     figures: list[dict] = Field(default_factory=list)
     tables: list[dict] = Field(default_factory=list)

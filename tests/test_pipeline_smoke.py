@@ -74,7 +74,7 @@ def test_run_extraction_stage(monkeypatch):
     assert result.exit_code == 0
     assert state.stages["extraction"].status == "done"
     assert state.extraction.text_md is not None
-    assert "Pipeline smoke extraction body." in Path(state.extraction.text_md).read_text(
+    assert "Pipeline smoke extraction body." in (project_dir / state.extraction.text_md).read_text(
         encoding="utf-8"
     )
 

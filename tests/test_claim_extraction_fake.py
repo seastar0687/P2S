@@ -89,10 +89,14 @@ def test_run_claim_extraction_stage_writes_claims_and_review(monkeypatch):
 
     claims_path = project_dir / "claims.json"
     review_path = project_dir / "reviews" / "claim_review_rev001.json"
+    evidence_report_path = project_dir / "evidence_match_report.json"
     assert claims_path.exists()
     assert review_path.exists()
+    assert evidence_report_path.exists()
     assert updated.claims[0].claim_id == "claim_001"
     assert updated.reviews
     assert updated.stages["claim_extraction"].status == "done"
     assert str(claims_path) in updated.stages["claim_extraction"].output_paths
     assert str(review_path) in updated.stages["claim_extraction"].output_paths
+    assert str(evidence_report_path) in updated.stages["claim_extraction"].output_paths
+    assert updated.extraction.evidence_match_report_path == "evidence_match_report.json"

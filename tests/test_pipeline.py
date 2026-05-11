@@ -62,7 +62,7 @@ def test_run_extraction_stage_creates_snapshot_and_output(monkeypatch):
     updated = pipeline.run_stage(state.project_id, "extraction")
 
     revisions = persistence.list_revisions(state.project_id)
-    output_path = Path(updated.extraction.text_md)
+    output_path = runs_dir / updated.project_id / updated.extraction.text_md
     assert len(revisions) == 1
     assert updated.stages["extraction"].status == "done"
     assert updated.stages["extraction"].started_at is not None

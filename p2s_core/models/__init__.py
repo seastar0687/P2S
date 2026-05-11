@@ -1,8 +1,25 @@
 """Pydantic schemas for the P2S MVP 0 data contract."""
 
+from p2s_core.models.asset_plan import (
+    AssetPlanBundle,
+    AssetPlanQualityReport,
+    RenderPlan,
+    SceneAssetPlan,
+    TTSPlan,
+    VisualAssetPlan,
+)
 from p2s_core.models.claim import PaperClaim
 from p2s_core.models.common import EvidenceSpan, SuggestedFix, VisualIdentityProfile
 from p2s_core.models.extraction_result import ClaimExtractionResult, ClaimReviewBundle
+from p2s_core.models.extraction import (
+    EvidenceMatchReport,
+    EvidenceMatchReportBundle,
+    ExtractedFigure,
+    ExtractedSection,
+    ExtractedTable,
+    ExtractionQualityReport,
+    RealPaperSmokeReport,
+)
 from p2s_core.models.paper import ExtractedPaper, PaperChunk, PaperSection
 from p2s_core.models.persona import PersonaProfile, VRMProfile, VoiceProfile
 from p2s_core.models.presentation import (
@@ -41,9 +58,17 @@ from p2s_core.models.scene import (
 from p2s_core.models.style import StyleProfile
 
 __all__ = [
+    "AssetPlanBundle",
+    "AssetPlanQualityReport",
     "EvidenceSpan",
+    "EvidenceMatchReport",
+    "EvidenceMatchReportBundle",
     "ExtractionState",
+    "ExtractedFigure",
     "ExtractedPaper",
+    "ExtractedSection",
+    "ExtractedTable",
+    "ExtractionQualityReport",
     "GateDecision",
     "ClaimExtractionResult",
     "ClaimReviewBundle",
@@ -62,8 +87,11 @@ __all__ = [
     "ProjectSource",
     "ProjectState",
     "ReviewResult",
+    "RealPaperSmokeReport",
+    "RenderPlan",
     "STAGE_NAMES",
     "Scene",
+    "SceneAssetPlan",
     "SceneDraft",
     "ScenesBundle",
     "SceneRewritePatch",
@@ -71,6 +99,7 @@ __all__ = [
     "StageState",
     "StyleProfile",
     "SuggestedFix",
+    "TTSPlan",
     "AssetPolicy",
     "AssetTypeHint",
     "BackgroundMode",
@@ -78,6 +107,7 @@ __all__ = [
     "VRMProfile",
     "VisualFocus",
     "VisualIdentityProfile",
+    "VisualAssetPlan",
     "VisualType",
     "VoiceDirection",
     "VoiceProfile",

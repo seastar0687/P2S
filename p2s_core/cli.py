@@ -12,6 +12,7 @@ from p2s_core.pipelines import (
 )
 from p2s_core.services import LLMServiceError
 from p2s_core.services import persistence
+from p2s_core.services.harden1_smoke import run_harden1_smoke_set
 from p2s_core.services.persona_style import validate_persona_packages, validate_style_packages
 
 
@@ -61,6 +62,13 @@ def run(stage_name: str, project_id: str | None, force: bool) -> None:
     click.echo(f"  -> status: {stage.status}")
     for output_path in stage.output_paths:
         click.echo(f"  -> {output_path}")
+    if stage_name == "asset_preparation" and state.asset_plan:
+        quality_report = state.asset_plan.get("quality_report", {})
+        click.echo(f"  -> scene_source: {state.asset_plan.get('scene_source')}")
+        click.echo(f"  -> scene_count: {quality_report.get('scene_count')}")
+        click.echo(f"  -> warnings: {len(quality_report.get('warnings', []))}")
+        for warning in quality_report.get("warnings", []):
+            click.echo(f"     warning: {warning}")
 
 
 @cli.command()
@@ -80,6 +88,28 @@ def status(project_id: str | None) -> None:
         if stage.finished_at:
             suffix = f" ({stage.finished_at})"
         click.echo(f"  {stage_name:<22} {stage.status:<12} {_format_code_version(stage.code_version)}{suffix}")
+
+
+@cli.group()
+def smoke() -> None:
+    """Smoke-test fixture sets."""
+
+
+@smoke.command("real-papers")
+@click.option("--set", "smoke_set", default="harden1", show_default=True)
+def smoke_real_papers(smoke_set: str) -> None:
+    if smoke_set != "harden1":
+        raise click.ClickException(f"Unknown smoke set: {smoke_set}")
+    try:
+        reports = run_harden1_smoke_set()
+    except FileNotFoundError as exc:
+        raise click.ClickException(str(exc)) from exc
+    click.echo(f"Ran HARDEN-1 smoke set: {len(reports)} paper(s)")
+    for report in reports:
+        click.echo(
+            f"  -> {report.project_id}: {report.extraction_quality.quality_level}, "
+            f"warnings={len(report.key_warnings)}"
+        )
 
 
 @cli.command("validate-personas")

@@ -5,8 +5,15 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from p2s_core.config import load_config
-from p2s_core.models import ClaimExtractionResult, ClaimReviewBundle, PaperClaim, ProjectState
+from p2s_core.models import (
+    ClaimExtractionResult,
+    ClaimReviewBundle,
+    EvidenceMatchReportBundle,
+    PaperClaim,
+    ProjectState,
+)
 from p2s_core.reviewers import Arbiter, ClaimEvidenceReviewer, PaperFidelityReviewer
+from p2s_core.services.evidence_matching import load_evidence_source, match_evidence
 import p2s_core.services.persistence as persistence
 from p2s_core.services.llm_service import LLMService
 from p2s_core.services.text_chunking import build_extracted_paper, estimate_tokens
@@ -133,6 +140,8 @@ def run_claim_extraction_stage(
 ) -> ProjectState:
     project_dir = persistence.project_dir(state.project_id)
     extracted_path = Path(state.extraction.text_md or project_dir / "extracted_text.md")
+    if not extracted_path.is_absolute():
+        extracted_path = project_dir / extracted_path
     if not extracted_path.exists():
         raise FileNotFoundError(f"extracted_text.md not found: {extracted_path}")
 
@@ -170,21 +179,34 @@ def run_claim_extraction_stage(
     claims_path = project_dir / "claims.json"
     claims_path.write_text(result.model_dump_json(indent=2), encoding="utf-8")
 
-    review_bundle = review_claim_extraction_result(result, extracted_text)
+    evidence_source = load_evidence_source(
+        project_dir,
+        state.extraction.normalized_text_md,
+        state.extraction.text_md,
+    )
+    review_bundle = review_claim_extraction_result(result, evidence_source)
     reviews_dir = project_dir / "reviews"
     reviews_dir.mkdir(parents=True, exist_ok=True)
     review_path = reviews_dir / "claim_review_rev001.json"
     review_path.write_text(review_bundle.model_dump_json(indent=2), encoding="utf-8")
+    evidence_report = build_evidence_match_report(result, evidence_source)
+    evidence_report_path = project_dir / "evidence_match_report.json"
+    evidence_report_path.write_text(evidence_report.model_dump_json(indent=2), encoding="utf-8")
 
     state.claims = result.claims
     state.reviews.extend(review_bundle.reviews)
+    state.extraction.evidence_match_report_path = "evidence_match_report.json"
     if review_bundle.gate_decision.status == "pass":
         state.stages["claim_extraction"].status = "done"
     elif review_bundle.gate_decision.status == "human_check":
         state.stages["claim_extraction"].status = "needs_review"
     else:
         state.stages["claim_extraction"].status = "rejected"
-    state.stages["claim_extraction"].output_paths = [str(claims_path), str(review_path)]
+    state.stages["claim_extraction"].output_paths = [
+        str(claims_path),
+        str(review_path),
+        str(evidence_report_path),
+    ]
     return state
 
 
@@ -204,6 +226,28 @@ def review_claim_extraction_result(
         project_id=result.project_id,
         reviews=reviews,
         gate_decision=gate_decision,
+        created_at=utc_now(),
+    )
+
+
+def build_evidence_match_report(
+    result: ClaimExtractionResult,
+    extracted_text: str,
+) -> EvidenceMatchReportBundle:
+    reports = []
+    for claim in result.claims:
+        for span in claim.evidence_spans:
+            reports.append(
+                match_evidence(
+                    span.text,
+                    extracted_text,
+                    claim_id=claim.claim_id,
+                    section_hint=span.section,
+                )
+            )
+    return EvidenceMatchReportBundle(
+        project_id=result.project_id,
+        reports=reports,
         created_at=utc_now(),
     )
 
