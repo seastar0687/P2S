@@ -38,12 +38,22 @@ class BasePipeline:
         if stage.status == "done" and not force:
             raise StageAlreadyDoneError(f"Stage already done: {stage_name}. Use force=True to rerun.")
 
-        stage_index = self.stage_order.index(stage_name)
-        for prerequisite in self.stage_order[:stage_index]:
+        for prerequisite in self._prerequisites_for(stage_name):
             if state.stages[prerequisite].status != "done":
                 raise StagePrerequisiteError(
                     f"Stage {stage_name} requires {prerequisite} to be done first."
                 )
+
+    def _prerequisites_for(self, stage_name: str) -> tuple[str, ...]:
+        if stage_name == "asset_preparation":
+            return (
+                "extraction",
+                "claim_extraction",
+                "narrative_planning",
+                "presentation_planning",
+            )
+        stage_index = self.stage_order.index(stage_name)
+        return self.stage_order[:stage_index]
 
     @staticmethod
     def utc_now() -> str:

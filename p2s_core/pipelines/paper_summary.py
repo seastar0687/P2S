@@ -6,7 +6,7 @@ from pathlib import Path
 from p2s_core.models import ProjectSource, ProjectState, default_stages
 from p2s_core.pipelines.base import BasePipeline
 from p2s_core.services.code_version import capture_code_version
-from p2s_core.services import claim_extraction, llm_quality_rewrite, narrative_planning
+from p2s_core.services import asset_preparation, claim_extraction, llm_quality_rewrite, narrative_planning
 from p2s_core.services import paper_extraction, persistence
 from p2s_core.services import presentation_planning
 from p2s_core.services.persona_style import load_persona, load_style
@@ -62,6 +62,7 @@ class PaperSummaryPipeline(BasePipeline):
             "narrative_planning",
             "presentation_planning",
             "llm_quality_rewrite",
+            "asset_preparation",
         }:
             raise NotImplementedError("此 stage 將在 MVP 2+ 實作")
 
@@ -85,8 +86,10 @@ class PaperSummaryPipeline(BasePipeline):
                 state = narrative_planning.run_narrative_planning_stage(state)
             elif stage_name == "presentation_planning":
                 state = presentation_planning.run_presentation_planning_stage(state)
-            else:
+            elif stage_name == "llm_quality_rewrite":
                 state = llm_quality_rewrite.run_llm_quality_rewrite_stage(state)
+            else:
+                state = asset_preparation.run_asset_preparation_stage(state)
             state.code_version = capture_code_version()
             state.stages[stage_name].finished_at = self.utc_now()
             persistence.save_state(state)

@@ -21,6 +21,7 @@ from p2s_core.services.claim_extraction import extract_claims, run_claim_extract
 from p2s_core.services.narrative_planning import run_narrative_planning_stage
 from p2s_core.services.presentation_planning import run_presentation_planning_stage
 from p2s_core.services.llm_quality_rewrite import run_llm_quality_rewrite_stage
+from p2s_core.services.asset_preparation import prepare_assets_for_project, run_asset_preparation_stage
 
 __all__ = [
     "LLMService",
@@ -42,6 +43,8 @@ __all__ = [
     "run_narrative_planning_stage",
     "run_presentation_planning_stage",
     "run_llm_quality_rewrite_stage",
+    "prepare_assets_for_project",
+    "run_asset_preparation_stage",
     "validate_persona_package",
     "validate_persona_packages",
     "validate_presentation_profile_package",
