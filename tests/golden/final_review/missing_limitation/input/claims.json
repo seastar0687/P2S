@@ -1,0 +1,19 @@
+[
+  {
+    "claim_id": "claim_limitation",
+    "claim_text": "The method has an explicit limitation in the smoke fixture.",
+    "claim_type": "limitation",
+    "source_section": "calibration",
+    "evidence_spans": [
+      {
+        "section": "calibration",
+        "text": "The method has an explicit limitation in the smoke fixture.",
+        "page": null,
+        "confidence": "direct"
+      }
+    ],
+    "certainty": "explicit",
+    "importance": 5,
+    "risk_flags": []
+  }
+]

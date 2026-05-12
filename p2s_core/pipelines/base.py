@@ -59,6 +59,8 @@ class BasePipeline:
             return ("asset_generation",)
         if stage_name == "media_quality_check":
             return ("composition",)
+        if stage_name == "final_review":
+            return ("composition",)
         stage_index = self.stage_order.index(stage_name)
         return self.stage_order[:stage_index]
 

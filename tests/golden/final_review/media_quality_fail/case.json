@@ -1,0 +1,11 @@
+{
+  "case_id": "media_quality_fail",
+  "case_type": "media_quality_fail",
+  "description": "Failed media quality report should not pass.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "media_quality_fail"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "critical_prompt_injection",
+  "case_type": "prompt_injection",
+  "description": "Critical prompt injection should reject.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "prompt_injection"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "suite_id": "harden4_v1",
+  "case_count": 10,
+  "passed_count": 10,
+  "failed_count": 0,
+  "false_negative_risk_count": 0,
+  "false_positive_risk_count": 0,
+  "results": [
+    {
+      "case_id": "arbiter_blocking_matrix",
+      "passed": true,
+      "expected_status": "reject",
+      "actual_status": "reject",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "critical_prompt_injection",
+      "passed": true,
+      "expected_status": "reject",
+      "actual_status": "reject",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "good_case",
+      "passed": true,
+      "expected_status": "pass",
+      "actual_status": "pass",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "media_quality_fail",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "missing_limitation",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "overhype_blocking",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "overhype_warning",
+      "passed": true,
+      "expected_status": "pass",
+      "actual_status": "pass",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "prompt_injection",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "unsupported_claim",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    },
+    {
+      "case_id": "visual_mismatch",
+      "passed": true,
+      "expected_status": "human_check",
+      "actual_status": "human_check",
+      "missing_expected_findings": [],
+      "unexpected_blocking_findings": [],
+      "unexpected_pass": false,
+      "unexpected_reject": false,
+      "notes": []
+    }
+  ],
+  "reviewer_notes": {
+    "VisualAlignmentReviewer": [
+      "HARDEN-4 v1 checks artifact and metadata consistency, not semantic image understanding."
+    ]
+  },
+  "pass_gate": true,
+  "created_at": "2026-05-12T08:16:07.535739+00:00"
+}

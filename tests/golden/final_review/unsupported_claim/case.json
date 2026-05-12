@@ -1,0 +1,11 @@
+{
+  "case_id": "unsupported_claim",
+  "case_type": "unsupported_claim",
+  "description": "Unsupported factual claim should be caught.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "unsupported_claim"
+  ]
+}

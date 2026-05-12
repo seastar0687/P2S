@@ -1,0 +1,8 @@
+[
+  {
+    "reviewer": "PaperFidelityFinalReviewer",
+    "category": "limitation_missing",
+    "severity_at_least": "high",
+    "blocking": true
+  }
+]

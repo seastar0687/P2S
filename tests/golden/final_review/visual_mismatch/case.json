@@ -1,0 +1,11 @@
+{
+  "case_id": "visual_mismatch",
+  "case_type": "visual_mismatch",
+  "description": "Missing required visual artifact should block.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "visual_mismatch"
+  ]
+}

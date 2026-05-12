@@ -1,0 +1,11 @@
+{
+  "case_id": "overhype_warning",
+  "case_type": "overhype",
+  "description": "Warning-only overhype should pass.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "overhype"
+  ]
+}

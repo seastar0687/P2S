@@ -1,0 +1,8 @@
+[
+  {
+    "reviewer": "FinalVideoReviewer",
+    "category": "media_quality",
+    "severity_at_least": "high",
+    "blocking": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "expected_status": "human_check",
+  "must_have_blocking_categories": [
+    "overhype"
+  ],
+  "must_not_have_blocking_categories": [],
+  "allowed_warning_categories": [
+    "artifact_missing",
+    "media_quality",
+    "fallback_quality",
+    "overhype"
+  ],
+  "notes": null
+}

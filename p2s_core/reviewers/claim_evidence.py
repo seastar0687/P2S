@@ -4,7 +4,6 @@ import re
 
 from p2s_core.models import PaperClaim, ReviewResult, SuggestedFix
 from p2s_core.reviewers.base import utc_now
-from p2s_core.services.evidence_matching import match_evidence
 
 
 class ClaimEvidenceReviewer:
@@ -41,6 +40,8 @@ class ClaimEvidenceReviewer:
                 pass_gate = False
                 severity = _max_severity(severity, "medium")
                 score = min(score, 0.5)
+
+            from p2s_core.services.evidence_matching import match_evidence
 
             match = match_evidence(
                 span.text,

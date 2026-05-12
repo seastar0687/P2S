@@ -80,6 +80,16 @@ def run(stage_name: str, project_id: str | None, force: bool) -> None:
             click.echo(f"  -> pass_gate: {report.get('pass_gate')}")
             click.echo(f"  -> blocking_issues: {len(report.get('blocking_issues', []))}")
             click.echo(f"  -> warnings: {len(report.get('warnings', []))}")
+    if stage_name == "final_review":
+        import json
+
+        gate_paths = [path for path in stage.output_paths if "final_gate_decision" in path]
+        if gate_paths:
+            gate_path = persistence.project_dir(project_id) / gate_paths[-1]
+            gate = json.loads(gate_path.read_text(encoding="utf-8"))
+            click.echo(f"  -> gate_status: {gate.get('status')}")
+            click.echo(f"  -> blocking_issues: {len(gate.get('blocking_issues', []))}")
+            click.echo(f"  -> warnings: {gate.get('warning_count')}")
 
 
 @cli.command()

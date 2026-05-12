@@ -1,0 +1,16 @@
+{
+  "expected_status": "pass",
+  "must_have_blocking_categories": [],
+  "must_not_have_blocking_categories": [
+    "unsupported_claim",
+    "prompt_injection",
+    "media_quality"
+  ],
+  "allowed_warning_categories": [
+    "artifact_missing",
+    "media_quality",
+    "fallback_quality",
+    "overhype"
+  ],
+  "notes": null
+}

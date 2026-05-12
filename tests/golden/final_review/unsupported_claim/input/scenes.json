@@ -1,0 +1,26 @@
+{
+  "project_id": "unsupported_claim",
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "purpose": "method",
+      "claim_ids": [
+        "claim_001"
+      ],
+      "voice_text": "This paper proves the method outperforms all existing AI systems.",
+      "subtitle_text": "Reviewer calibration scene.",
+      "target_duration_sec": 2.0,
+      "presenter_mode": "off_screen",
+      "visual_focus": "text_card",
+      "asset_policy": "optional",
+      "asset_intent": null,
+      "asset_type_hint": "none",
+      "background_mode": "static_clean",
+      "notes_for_render": null,
+      "visual_intent": null,
+      "visual_type": null,
+      "risk_flags": []
+    }
+  ],
+  "created_at": "2026-05-12T00:00:00Z"
+}

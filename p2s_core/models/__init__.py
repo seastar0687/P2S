@@ -11,6 +11,12 @@ from p2s_core.models.asset_plan import (
 from p2s_core.models.claim import PaperClaim
 from p2s_core.models.common import EvidenceSpan, SuggestedFix, VisualIdentityProfile
 from p2s_core.models.extraction_result import ClaimExtractionResult, ClaimReviewBundle
+from p2s_core.models.final_review import (
+    FinalGateDecision,
+    FinalReviewBundle,
+    ReviewerFinding,
+    ReviewerSummary,
+)
 from p2s_core.models.extraction import (
     EvidenceMatchReport,
     EvidenceMatchReportBundle,
@@ -58,6 +64,14 @@ from p2s_core.models.project_state import (
     default_stages,
 )
 from p2s_core.models.review import GateDecision, ReviewResult
+from p2s_core.models.reviewer_calibration import (
+    ExpectedGateOutcome,
+    ExpectedReviewerFinding,
+    GoldenReviewCase,
+    ReviewerCalibrationReport,
+    ReviewerCalibrationResult,
+    SEVERITY_ORDER,
+)
 from p2s_core.models.rewrite import SceneRewritePatch, SceneRewriteResult
 from p2s_core.models.scene import (
     AssetPolicy,
@@ -80,6 +94,8 @@ __all__ = [
     "EvidenceSpan",
     "EvidenceMatchReport",
     "EvidenceMatchReportBundle",
+    "ExpectedGateOutcome",
+    "ExpectedReviewerFinding",
     "ExtractionState",
     "ExtractedFigure",
     "ExtractedPaper",
@@ -90,12 +106,15 @@ __all__ = [
     "GeneratedAudio",
     "GeneratedSegment",
     "GeneratedVisual",
+    "GoldenReviewCase",
     "ClaimExtractionResult",
     "ClaimReviewBundle",
     "CodeVersion",
     "CompositionResult",
     "CompositionQualityResult",
     "FallbackQualityReport",
+    "FinalGateDecision",
+    "FinalReviewBundle",
     "PaperChunk",
     "PaperClaim",
     "PaperSection",
@@ -112,10 +131,15 @@ __all__ = [
     "ProjectSource",
     "ProjectState",
     "ReviewResult",
+    "ReviewerFinding",
+    "ReviewerCalibrationReport",
+    "ReviewerCalibrationResult",
+    "ReviewerSummary",
     "RealPaperSmokeReport",
     "RenderPlan",
     "STAGE_NAMES",
     "Scene",
+    "SEVERITY_ORDER",
     "SceneAssetPlan",
     "SegmentQualityResult",
     "SceneDraft",

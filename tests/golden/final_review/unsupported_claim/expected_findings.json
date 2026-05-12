@@ -1,0 +1,8 @@
+[
+  {
+    "reviewer": "DevilAdvocateReviewer",
+    "category": "unsupported_claim",
+    "severity_at_least": "high",
+    "blocking": true
+  }
+]

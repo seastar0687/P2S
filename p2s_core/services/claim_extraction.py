@@ -12,7 +12,9 @@ from p2s_core.models import (
     PaperClaim,
     ProjectState,
 )
-from p2s_core.reviewers import Arbiter, ClaimEvidenceReviewer, PaperFidelityReviewer
+from p2s_core.reviewers.arbiter import Arbiter
+from p2s_core.reviewers.claim_evidence import ClaimEvidenceReviewer
+from p2s_core.reviewers.paper_fidelity import PaperFidelityReviewer
 from p2s_core.services.evidence_matching import load_evidence_source, match_evidence
 import p2s_core.services.persistence as persistence
 from p2s_core.services.llm_service import LLMService

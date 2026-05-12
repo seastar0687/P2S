@@ -1,0 +1,11 @@
+{
+  "case_id": "arbiter_blocking_matrix",
+  "case_type": "arbiter_matrix",
+  "description": "Representative blocking matrix case.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "arbiter_matrix"
+  ]
+}

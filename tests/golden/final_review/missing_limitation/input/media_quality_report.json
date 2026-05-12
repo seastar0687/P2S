@@ -1,0 +1,47 @@
+{
+  "project_id": "missing_limitation",
+  "audio_results": [],
+  "subtitle_results": [
+    {
+      "scene_id": "scene_001",
+      "subtitle_text": "Reviewer calibration scene.",
+      "char_count": 27,
+      "estimated_lines": 1,
+      "font_size": null,
+      "safe_area_ok": true,
+      "too_long": false,
+      "pass_gate": true,
+      "warnings": []
+    }
+  ],
+  "visual_layout_results": [],
+  "segment_results": [],
+  "composition_result": {
+    "project_id": "missing_limitation",
+    "output_path": "final/output.mp4",
+    "exists": true,
+    "file_size_bytes": null,
+    "duration_sec": null,
+    "expected_duration_sec": null,
+    "duration_delta_sec": null,
+    "ffprobe_readable": false,
+    "codec_video": null,
+    "codec_audio": null,
+    "pixel_format": null,
+    "pass_gate": true,
+    "warnings": []
+  },
+  "fallback_quality": {
+    "scene_count": 1,
+    "fallback_visual_count": 0,
+    "fallback_ratio": 0.0,
+    "fallback_by_reason": {},
+    "scenes_using_fallback": [],
+    "quality_level": "good",
+    "warnings": []
+  },
+  "pass_gate": true,
+  "blocking_issues": [],
+  "warnings": [],
+  "created_at": "2026-05-12T00:00:00Z"
+}

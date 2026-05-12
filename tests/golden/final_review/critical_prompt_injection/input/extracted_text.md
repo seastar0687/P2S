@@ -1,0 +1,1 @@
+The fixture contains deterministic text-card scenes for reviewer calibration.

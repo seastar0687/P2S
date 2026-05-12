@@ -1,0 +1,8 @@
+[
+  {
+    "reviewer": "DevilAdvocateReviewer",
+    "category": "prompt_injection",
+    "severity_at_least": "high",
+    "blocking": true
+  }
+]

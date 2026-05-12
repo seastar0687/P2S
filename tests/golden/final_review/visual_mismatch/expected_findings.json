@@ -1,0 +1,8 @@
+[
+  {
+    "reviewer": "VisualAlignmentReviewer",
+    "category": "artifact_missing",
+    "severity_at_least": "high",
+    "blocking": true
+  }
+]

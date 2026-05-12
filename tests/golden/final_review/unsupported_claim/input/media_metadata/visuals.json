@@ -1,0 +1,14 @@
+[
+  {
+    "scene_id": "scene_001",
+    "asset_source": "text_card",
+    "output_path": "assets/scene_001.png",
+    "source_path": null,
+    "fallback_level": null,
+    "width": 1080,
+    "height": 1920,
+    "generation_status": "done",
+    "warnings": [],
+    "created_at": "2026-05-12T00:00:00Z"
+  }
+]

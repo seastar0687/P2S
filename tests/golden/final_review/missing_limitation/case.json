@@ -1,0 +1,11 @@
+{
+  "case_id": "missing_limitation",
+  "case_type": "missing_limitation",
+  "description": "Central limitation omitted from scenes should require human check.",
+  "input_dir": "input",
+  "expected_gate_path": "expected_gate.json",
+  "expected_findings_path": "expected_findings.json",
+  "tags": [
+    "missing_limitation"
+  ]
+}

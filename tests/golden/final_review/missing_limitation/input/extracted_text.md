@@ -1,0 +1,1 @@
+The method has an explicit limitation in the smoke fixture.

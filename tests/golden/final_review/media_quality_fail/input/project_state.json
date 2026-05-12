@@ -1,0 +1,168 @@
+{
+  "project_id": "media_quality_fail",
+  "created_at": "2026-05-12T00:00:00Z",
+  "source": {
+    "pdf_path": "runs/media_quality_fail/source.pdf",
+    "title": null,
+    "authors": [],
+    "doi": null,
+    "arxiv_id": null
+  },
+  "settings": {
+    "target_duration_sec": 60,
+    "language": "zh-TW",
+    "target_audience": "general_science",
+    "use_character": false,
+    "use_paper_figures": true,
+    "video_orientation": "vertical"
+  },
+  "persona": {},
+  "style": {},
+  "extraction": {
+    "text_md": "extracted_text.md",
+    "normalized_text_md": null,
+    "sections_path": null,
+    "figures_path": null,
+    "tables_path": null,
+    "evidence_match_report_path": null,
+    "sections": [],
+    "figures": [],
+    "tables": [],
+    "quality_report": {}
+  },
+  "claims": [
+    {
+      "claim_id": "claim_001",
+      "claim_text": "The fixture contains deterministic text-card scenes for reviewer calibration.",
+      "claim_type": "method",
+      "source_section": "calibration",
+      "evidence_spans": [
+        {
+          "section": "calibration",
+          "text": "The fixture contains deterministic text-card scenes for reviewer calibration.",
+          "page": null,
+          "confidence": "direct"
+        }
+      ],
+      "certainty": "explicit",
+      "importance": 3,
+      "risk_flags": []
+    }
+  ],
+  "narrative_plan": {},
+  "presentation_plan": {},
+  "active_scene_source": "scenes.json",
+  "asset_plan": {},
+  "script": {
+    "target_duration": 60,
+    "audience": "general_science",
+    "scenes": []
+  },
+  "storyboard": {
+    "frames": []
+  },
+  "assets": {
+    "images": [],
+    "audio": [],
+    "segments": []
+  },
+  "reviews": [],
+  "revision_history": [],
+  "code_version": null,
+  "final_video": {
+    "path": "final/output.mp4",
+    "status": "draft"
+  },
+  "stages": {
+    "extraction": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "claim_extraction": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "narrative_planning": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "presentation_planning": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "llm_quality_rewrite": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "asset_preparation": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "asset_generation": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "composition": {
+      "status": "done",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "media_quality_check": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    },
+    "final_review": {
+      "status": "pending",
+      "started_at": null,
+      "finished_at": null,
+      "output_paths": [],
+      "error": null,
+      "revision_count": 0,
+      "code_version": null
+    }
+  }
+}

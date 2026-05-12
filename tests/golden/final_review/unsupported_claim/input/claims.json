@@ -1,0 +1,19 @@
+[
+  {
+    "claim_id": "claim_001",
+    "claim_text": "The fixture contains deterministic text-card scenes for reviewer calibration.",
+    "claim_type": "method",
+    "source_section": "calibration",
+    "evidence_spans": [
+      {
+        "section": "calibration",
+        "text": "The limited benchmark improved by 5 percent.",
+        "page": null,
+        "confidence": "direct"
+      }
+    ],
+    "certainty": "explicit",
+    "importance": 3,
+    "risk_flags": []
+  }
+]
